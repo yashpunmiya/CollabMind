@@ -1,0 +1,11 @@
+export type View = "home" | "discover" | "pipeline" | "memory";
+export type CreatorProfile = { name:string; niche:string; platform:string; followers:number; audienceGoal:string; avoid:string; tone:string; formats:string[] };
+export type Candidate = { id:string; name:string; handle:string; initials:string; role:string; niche:string; platform:string; followers:number; location:string; baseScore:number; responseRate:number; audience:string[]; tags:string[]; formats:string[]; color:string; bio:string; concept:string; why:string; risk:string };
+export type RankedCandidate = Candidate & { score:number; delta:number; reasons:string[]; format:string };
+export type MemoryKind = "profile" | "goal" | "preference" | "boundary" | "outcome";
+export type MemorySignal = { id:string; kind:MemoryKind; title:string; detail:string; tags:string[]; weight:number; source:"onboarding"|"rejection"|"campaign"; createdAt:string };
+export type CollaborationStatus = "draft" | "contacted" | "replied" | "scheduled" | "published";
+export type CampaignResults = { views:number; followersGained:number; nonFollowerReach:number; engagement:number };
+export type Collaboration = { id:string; creatorId:string; status:CollaborationStatus; concept:string; format:string; subject:string; outreach:string; brief:string[]; createdAt:string; results?:CampaignResults };
+export type ActivityItem = { id:string; title:string; detail:string; at:string; kind:"match"|"memory"|"outreach"|"reply"|"result" };
+export type DemoState = { profile:CreatorProfile|null; memories:MemorySignal[]; rejectedCreatorIds:string[]; collaborations:Collaboration[]; activity:ActivityItem[] };
